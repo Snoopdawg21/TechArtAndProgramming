@@ -65,4 +65,15 @@ public class MapGenerator : MonoBehaviour
             Instantiate(cornerPrefab, hallWorldPositions[i], Quaternion.identity);
         }
     }
+
+    private void ConnectHallways()
+    {
+        for (int i = 0; i < numberOfRooms; i++)
+        {
+            for (int j = 0; j <  roomGridPositions[i].x - hallGridPositions[i].x; i++)
+            {
+                
+            }
+        }
+    }
 }
