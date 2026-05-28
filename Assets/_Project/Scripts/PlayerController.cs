@@ -6,13 +6,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float movementSpeed;
     [SerializeField] private Vector2 direction;
-    private Vector3 movement;
 
     [Header("Camera")] 
-    [SerializeField] private GameObject camera;
-
+    [SerializeField] private GameObject camObject;
+    [SerializeField] private Camera playerCam;
     [SerializeField] private Vector3 rotation;
     [SerializeField] private float sensitivity;
+    private Vector3 lookAtPoint;
     
     public void OnForward(InputValue value)
     {
@@ -22,6 +22,11 @@ public class PlayerController : MonoBehaviour
     public void OnSideways(InputValue value)
     {
         direction.y = value.Get<float>();
+    }
+
+    public void OnMousePos(InputValue value)
+    {
+        rotation = value.Get<Vector2>();
     }
     
     void FixedUpdate()
@@ -35,14 +40,20 @@ public class PlayerController : MonoBehaviour
         rb.linearVelocity = (Vector3.forward * direction.x + Vector3.right * direction.y) * movementSpeed;
     }
 
+    
     private void CalculateMouseMovement()
     {
-        rotation.x += Input.GetAxis("Mouse X") * sensitivity;
-        rotation.y += Input.GetAxis("Mouse Y") * -1 * sensitivity;
+        Debug.Log($"screen width: {Screen.width}");
+        Debug.Log($"Mouse Pos: {rotation}");
         
-        camera.transform.eulerAngles = rotation;
-
-        transform.forward = camera.transform.forward;
+        if (rotation.x < Screen.width / 3)
+        {
+            camObject.transform.rotation = new Quaternion(camObject.transform.rotation.x - sensitivity, 0, 0, 0);
+        }
+        else if (rotation.x > Screen.width / 3)
+        {
+            camObject.transform.rotation = new Quaternion(camObject.transform.rotation.x + sensitivity, 0, 0, 0);
+        }
     }
     
 }
