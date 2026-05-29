@@ -6,6 +6,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float movementSpeed;
     [SerializeField] private Vector2 direction;
+    [SerializeField] private float gravityScale;
+    [SerializeField] private Vector3 groundCheckOffset;
+    [SerializeField] private float groundCheckDistance;
     private Vector3 movementX;
     private Vector3 movementZ;
 
@@ -53,6 +56,9 @@ public class PlayerController : MonoBehaviour
         Vector3 movement = (movementX + movementZ) * (movementSpeed * Time.deltaTime);
         
         rb.linearVelocity = movement;
+        
+        if(!groundCheck())
+            rb.AddForce(Physics.gravity * gravityScale, ForceMode.Acceleration);
     }
     
     private void CalculateMouseMovement()
@@ -66,5 +72,17 @@ public class PlayerController : MonoBehaviour
         playerCam.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         
         transform.Rotate(Vector3.up * lookX);
+    }
+
+    private bool groundCheck()
+    {
+        return Physics.SphereCast(groundCheckOffset, groundCheckDistance, Vector3.down, out RaycastHit hit);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawSphere(groundCheckOffset, groundCheckDistance);
+        
+        Gizmos.color = groundCheck() ? Color.blue : Color.red;
     }
 }
