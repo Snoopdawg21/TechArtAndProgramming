@@ -6,13 +6,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float movementSpeed;
     [SerializeField] private Vector2 direction;
+    private Vector3 movementX;
+    private Vector3 movementZ;
 
     [Header("Camera")] 
     [SerializeField] private GameObject camObject;
     [SerializeField] private Camera playerCam;
-    [SerializeField] private Vector3 rotation;
+    [SerializeField] private Vector2 mousePosition;
     [SerializeField] private float sensitivity;
-    private Vector3 lookAtPoint;
+    private float xRotation;
+    private float yRotation;
+    private float lookX;
+    private float lookY;
     
     public void OnForward(InputValue value)
     {
@@ -26,7 +31,12 @@ public class PlayerController : MonoBehaviour
 
     public void OnMousePos(InputValue value)
     {
-        rotation = value.Get<Vector2>();
+        mousePosition = value.Get<Vector2>();
+    }
+
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
     }
     
     void FixedUpdate()
@@ -37,23 +47,24 @@ public class PlayerController : MonoBehaviour
 
     private void CalculateMovement()
     {
-        rb.linearVelocity = (Vector3.forward * direction.x + Vector3.right * direction.y) * movementSpeed;
+        movementX = transform.forward * direction.x;
+        movementZ = transform.right * direction.y;
+        
+        Vector3 movement = (movementX + movementZ) * (movementSpeed * Time.deltaTime);
+        
+        rb.linearVelocity = movement;
     }
-
     
     private void CalculateMouseMovement()
     {
-        Debug.Log($"screen width: {Screen.width}");
-        Debug.Log($"Mouse Pos: {rotation}");
+        lookX = mousePosition.x * sensitivity * Time.deltaTime;
+        lookY = mousePosition.y * sensitivity * Time.deltaTime;
         
-        if (rotation.x < Screen.width / 3)
-        {
-            camObject.transform.rotation = new Quaternion(camObject.transform.rotation.x - sensitivity, 0, 0, 0);
-        }
-        else if (rotation.x > Screen.width / 3)
-        {
-            camObject.transform.rotation = new Quaternion(camObject.transform.rotation.x + sensitivity, 0, 0, 0);
-        }
+        xRotation -= lookY;
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+        
+        playerCam.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        
+        transform.Rotate(Vector3.up * lookX);
     }
-    
 }
