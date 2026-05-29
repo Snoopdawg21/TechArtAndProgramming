@@ -3,14 +3,17 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private Rigidbody rb;
+    [SerializeField] private CharacterController cc;
     [SerializeField] private float movementSpeed;
     [SerializeField] private Vector2 direction;
+    private Vector3 movementX;
+    private Vector3 movementZ;
+    
+    [Header("Ground Check")]
     [SerializeField] private float gravityScale;
     [SerializeField] private Vector3 groundCheckOffset;
     [SerializeField] private float groundCheckDistance;
-    private Vector3 movementX;
-    private Vector3 movementZ;
+    private Vector3 gravityMovement;
 
     [Header("Camera")] 
     [SerializeField] private GameObject camObject;
@@ -54,11 +57,15 @@ public class PlayerController : MonoBehaviour
         movementZ = transform.right * direction.y;
         
         Vector3 movement = (movementX + movementZ) * (movementSpeed * Time.deltaTime);
+
+        cc.Move(movement);
         
-        rb.linearVelocity = movement;
+        if(groundCheck())
+            gravityMovement = Vector3.zero;
+        else
+            gravityMovement += Physics.gravity * (movementSpeed * Time.deltaTime);
         
-        if(!groundCheck())
-            rb.AddForce(Physics.gravity * gravityScale, ForceMode.Acceleration);
+        cc.Move(gravityMovement);
     }
     
     private void CalculateMouseMovement()
@@ -76,12 +83,12 @@ public class PlayerController : MonoBehaviour
 
     private bool groundCheck()
     {
-        return Physics.SphereCast(groundCheckOffset, groundCheckDistance, Vector3.down, out RaycastHit hit);
+        return Physics.Raycast(transform.position + groundCheckOffset, Vector3.down, groundCheckDistance);
     }
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawSphere(groundCheckOffset, groundCheckDistance);
+        Gizmos.DrawRay(transform.position + groundCheckOffset, Vector3.down * groundCheckDistance);
         
         Gizmos.color = groundCheck() ? Color.blue : Color.red;
     }
