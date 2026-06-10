@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
     
     void FixedUpdate()
     {
+        //currentState.Execute();
         CalculateMouseMovement();
         CalculateMovement();
     }
