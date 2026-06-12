@@ -11,7 +11,7 @@ public interface IState
     public void Exit();
 }
 
-public class IdleState : IState
+public class IdleState1 : IState
 {
     public void Enter()
     {
