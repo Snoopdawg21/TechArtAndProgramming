@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7822155084046377766}
   - component: {fileID: 2104632166923583071}
   - component: {fileID: 1525696430321632237}
-  - component: {fileID: 7444485177182039429}
+  - component: {fileID: 8918041919565188922}
   m_Layer: 0
   m_Name: pCube2
   m_TagString: Untagged
@@ -91,7 +91,7 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7444485177182039429
+--- !u!65 &8918041919565188922
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,8 +110,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.5, y: 5, z: 5.0021496}
-  m_Center: {x: -0.25, y: -1.5, z: 2.5010748}
+  m_Size: {x: 0.5, y: 4.1, z: 4.505174}
+  m_Center: {x: -0.25, y: -1.95, z: 2.9996135}
 --- !u!1 &5191112965305056671
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 1607865862372243043}
   - component: {fileID: 8557616254301588085}
   - component: {fileID: 8000335247719565743}
-  - component: {fileID: 904470074722918644}
+  - component: {fileID: 3533077732788459024}
   m_Layer: 0
   m_Name: pCube1
   m_TagString: Untagged
@@ -237,7 +237,7 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &904470074722918644
+--- !u!65 &3533077732788459024
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -256,8 +256,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.5, y: 5, z: 5.0021496}
-  m_Center: {x: -0.25, y: -1.5, z: 2.5010748}
+  m_Size: {x: 0.5, y: 4.1, z: 4.505174}
+  m_Center: {x: -0.25, y: -1.95, z: 2.9996135}
 --- !u!1 &6991530134006436082
 GameObject:
   m_ObjectHideFlags: 0

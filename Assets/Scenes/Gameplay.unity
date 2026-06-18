@@ -513,6 +513,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3720256895029803301, guid: ad64d44ae061875409dd24313e3391fc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.00000011920929
+      objectReference: {fileID: 0}
+    - target: {fileID: 3720256895029803301, guid: ad64d44ae061875409dd24313e3391fc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.00000011920929
+      objectReference: {fileID: 0}
     - target: {fileID: 6132414449847059053, guid: ad64d44ae061875409dd24313e3391fc, type: 3}
       propertyPath: m_Name
       value: BaseRoom2
@@ -4179,7 +4187,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2223296625932458852, guid: 80fa5bbc6af3bfc4fa41c35106901e06, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 45
+      value: 44
       objectReference: {fileID: 0}
     - target: {fileID: 2223296625932458852, guid: 80fa5bbc6af3bfc4fa41c35106901e06, type: 3}
       propertyPath: m_LocalPosition.y
