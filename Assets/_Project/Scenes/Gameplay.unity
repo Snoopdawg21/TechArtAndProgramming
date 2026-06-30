@@ -556,6 +556,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BaseRoom2
       objectReference: {fileID: 0}
+    - target: {fileID: 7133513035235275752, guid: ad64d44ae061875409dd24313e3391fc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8927,6 +8931,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 24385215}
     m_Modifications:
+    - target: {fileID: 4027191539672043026, guid: a1881bcb262ceb84ca8d31a0a27359b3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8050375411840339084, guid: a1881bcb262ceb84ca8d31a0a27359b3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.0000043
