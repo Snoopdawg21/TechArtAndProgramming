@@ -44,11 +44,15 @@ public class PlayerController : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
     }
+
+    private void Update()
+    {
+        CalculateMouseMovement();
+    }
     
     void FixedUpdate()
     {
         //currentState.Execute();
-        CalculateMouseMovement();
         CalculateMovement();
     }
 
@@ -71,8 +75,8 @@ public class PlayerController : MonoBehaviour
     
     private void CalculateMouseMovement()
     {
-        lookX = mousePosition.x * sensitivity * Time.deltaTime;
-        lookY = mousePosition.y * sensitivity * Time.deltaTime;
+        lookX = mousePosition.x * sensitivity;
+        lookY = mousePosition.y * sensitivity;
         
         xRotation -= lookY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);

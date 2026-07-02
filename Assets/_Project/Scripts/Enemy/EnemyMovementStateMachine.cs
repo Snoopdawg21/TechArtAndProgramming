@@ -3,7 +3,7 @@ using UnityEngine.AI;
 
 public class EnemyMovementStateMachine
 {
-    public IEnemyMovementStates currentState {get; set;}
+    public IEnemyMovementStates currentState {get; private set;}
 
     public EMSPatrol patrolState;
     public EMSChase chaseState;
