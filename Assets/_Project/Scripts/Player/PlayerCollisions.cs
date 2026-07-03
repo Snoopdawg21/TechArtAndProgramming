@@ -2,19 +2,19 @@ using UnityEngine;
 
 public class PlayerCollisions : MonoBehaviour
 {
-    private Vector3 spawnPoint;
+    private PlayerController playerController;
+    private PlayerMovementStateMachine movementSM;
 
     private void Start()
     {
-        spawnPoint = transform.position;
+        playerController = gameObject.GetComponent<PlayerController>();
     }
     
     private void OnTriggerEnter(Collider col)
     {
-        Debug.Log("hi");
         if (!col.gameObject.CompareTag("enemy")) return;
         
         Debug.Log("touched");
-        transform.position = spawnPoint;
+        playerController.HitEnemy();
     }
 }

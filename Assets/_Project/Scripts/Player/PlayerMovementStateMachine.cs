@@ -8,7 +8,7 @@ public class PlayerMovementStateMachine
     
     public PlayerMovementStateMachine(PlayerController player)
     {
-        aliveState = new GameObject().GetComponent<PMSAlive>();
+        aliveState = new PMSAlive();
     }
 
     public void Initialize(IPlayerMovementStates state)
