@@ -17,7 +17,6 @@ public class PlayerCheck
     {
         Physics.SphereCast(pos.position + rayOffset, radius, pos.forward, out var hit, Mathf.Infinity);
 
-        Debug.Log(hit.collider?.gameObject.name);
         return hit.collider?.gameObject.layer == playerLayer;
     }
 }

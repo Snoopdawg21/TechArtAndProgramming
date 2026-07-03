@@ -9,9 +9,10 @@ public class PlayerCollisions : MonoBehaviour
         spawnPoint = transform.position;
     }
     
-    private void OnCollisionEnter(Collision col)
+    private void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.CompareTag("enemy")) return;
+        Debug.Log("hi");
+        if (!col.gameObject.CompareTag("enemy")) return;
         
         Debug.Log("touched");
         transform.position = spawnPoint;
