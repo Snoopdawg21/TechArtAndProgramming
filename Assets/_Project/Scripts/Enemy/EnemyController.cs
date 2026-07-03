@@ -36,7 +36,7 @@ public class EnemyController : MonoBehaviour
             return;
         }
         
-        if (!playerCheck.VisualCheck(transform.position)) return;
+        if (!playerCheck.VisualCheck(transform)) return;
         
         stimuliTimer = 0;
 

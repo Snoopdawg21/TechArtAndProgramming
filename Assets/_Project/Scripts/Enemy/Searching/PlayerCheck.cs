@@ -13,9 +13,9 @@ public class PlayerCheck
         playerLayer = LayerMask.NameToLayer("Player");
     }
 
-    public bool VisualCheck(Vector3 pos)
+    public bool VisualCheck(Transform pos)
     {
-        Physics.SphereCast(pos + rayOffset, radius, Vector3.forward, out var hit, Mathf.Infinity);
+        Physics.SphereCast(pos.position + rayOffset, radius, pos.forward, out var hit, Mathf.Infinity);
 
         Debug.Log(hit.collider?.gameObject.name);
         return hit.collider?.gameObject.layer == playerLayer;
