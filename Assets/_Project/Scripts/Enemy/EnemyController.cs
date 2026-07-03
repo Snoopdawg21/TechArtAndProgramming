@@ -5,7 +5,10 @@ public class EnemyController : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent agent;
     private EnemyMovementStateMachine movementSM;
-    private EnemySearchingStateMachine searchingSM;
+    private PlayerCheck playerCheck;
+
+    private float stimuliTimer;
+    private bool stateToggle;
 
     [Header("Visual Check")] 
     [SerializeField] private float radius;
@@ -17,17 +20,29 @@ public class EnemyController : MonoBehaviour
         movementSM = new EnemyMovementStateMachine(this);
         movementSM.Initialize(movementSM.patrolState);
 
-        searchingSM = new EnemySearchingStateMachine(this);
-        searchingSM.Initialize(searchingSM.sightCheck);
+        playerCheck = new PlayerCheck(this);
     }
     
     private void Update()
     {
+        stimuliTimer += Time.deltaTime;
         movementSM.currentState?.Execute(agent);
-        searchingSM.currentState?.Execute(transform.position);
 
-        if (!searchingSM.currentState.stimuli) return;
+        if (stimuliTimer > 5f && stateToggle)
+        {
+            movementSM.SwitchStates(movementSM.patrolState);
+            stateToggle = false;
+            return;
+        }
+
+        Debug.Log(playerCheck.VisualCheck(transform.position));
+        if (!playerCheck.VisualCheck(transform.position)) return;
         
+        stimuliTimer = 0;
+
+        if (stateToggle) return;
+        
+        stateToggle = true;
         movementSM.SwitchStates(movementSM.chaseState);
     }
 

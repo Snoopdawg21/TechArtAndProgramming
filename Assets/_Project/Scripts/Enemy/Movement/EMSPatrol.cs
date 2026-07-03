@@ -6,6 +6,7 @@ public class EMSPatrol : IEnemyMovementStates
     private GameObject[] patrolPointsOBJ;
     private Vector3[] pointsPos;
     private int counter;
+    private int randomNum;
     private float checkTimer;
     
     public void Enter()
@@ -22,16 +23,20 @@ public class EMSPatrol : IEnemyMovementStates
         }
         
         counter = 0;
+        randomNum = 0;
     }
 
     public void Execute(NavMeshAgent agent)
     {
         checkTimer += Time.deltaTime;
         if (agent.remainingDistance > agent.stoppingDistance || checkTimer < 2) return;
-        
-        counter++;
-        if (counter >= pointsPos.Length)
-            counter = 0;
+
+        while (randomNum == counter)
+        {
+            randomNum = Random.Range(0, pointsPos.Length);
+        }
+
+        counter = randomNum;
         
         agent.SetDestination(pointsPos[counter]);
         checkTimer = 0;
@@ -40,5 +45,6 @@ public class EMSPatrol : IEnemyMovementStates
     public void Exit()
     {
         counter = 0;
+        randomNum = 0;
     }
 }
