@@ -573,7 +573,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8718696185543600262, guid: ceeec85225d69e24f877fc8370941829, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -24
+      value: -25
       objectReference: {fileID: 0}
     - target: {fileID: 8718696185543600262, guid: ceeec85225d69e24f877fc8370941829, type: 3}
       propertyPath: m_LocalPosition.y
@@ -18403,6 +18403,7 @@ GameObject:
   - component: {fileID: 1880026222}
   - component: {fileID: 1880026227}
   - component: {fileID: 1880026226}
+  - component: {fileID: 1880026230}
   - component: {fileID: 1880026225}
   - component: {fileID: 1880026228}
   - component: {fileID: 1880026229}
@@ -18575,8 +18576,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fa69a9f15355604e807f67f59b032da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCollisions
---- !u!136 &1880026229
-CapsuleCollider:
+--- !u!65 &1880026229
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -18593,11 +18594,21 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
+  serializedVersion: 3
+  m_Size: {x: 3, y: 2, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1880026230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1880026220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 590cad9022a1840458f8f88c85d71678, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
 --- !u!1001 &1891550481
 PrefabInstance:
   m_ObjectHideFlags: 0
