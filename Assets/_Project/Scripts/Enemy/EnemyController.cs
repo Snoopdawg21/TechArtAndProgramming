@@ -5,6 +5,7 @@ public class EnemyController : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent agent;
     private EnemyMovementStateMachine movementSM;
+    private EnemySearchingStateMachine searchingSM;
 
     [Header("Visual Check")] 
     [SerializeField] private float radius;
@@ -15,17 +16,19 @@ public class EnemyController : MonoBehaviour
     {
         movementSM = new EnemyMovementStateMachine(this);
         movementSM.Initialize(movementSM.patrolState);
+
+        searchingSM = new EnemySearchingStateMachine(this);
+        searchingSM.Initialize(searchingSM.sightCheck);
     }
     
     private void Update()
     {
         movementSM.currentState?.Execute(agent);
-        Physics.SphereCast(transform.position + rayOffset, radius, Vector3.forward, out var hit, maxDistance);
-        
-        if (!hit.collider.CompareTag("Player") || hit.collider == null) return;
+        searchingSM.currentState?.Execute(transform.position);
+
+        if (!searchingSM.currentState.stimuli) return;
         
         movementSM.SwitchStates(movementSM.chaseState);
-        Debug.Log("chasing");
     }
 
     private void OnDrawGizmos()
