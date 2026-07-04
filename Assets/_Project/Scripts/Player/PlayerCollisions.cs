@@ -12,6 +12,7 @@ public class PlayerCollisions : MonoBehaviour
     
     private void OnTriggerEnter(Collider col)
     {
+        Debug.Log(col.gameObject.name);
         if (!col.gameObject.CompareTag("enemy")) return;
         
         Debug.Log("touched");

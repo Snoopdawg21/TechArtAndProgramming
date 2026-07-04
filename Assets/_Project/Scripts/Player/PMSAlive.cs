@@ -8,7 +8,7 @@ public class PMSAlive : IPlayerMovementStates
     public void Enter()
     {
         calc = GameObject.FindGameObjectWithTag("Player").GetComponent<MovementCalculation>();
-        collider = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCollisions>();
+        collider = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerCollisions>();
         calc.enabled = true;
         collider.enabled = true;
     }
