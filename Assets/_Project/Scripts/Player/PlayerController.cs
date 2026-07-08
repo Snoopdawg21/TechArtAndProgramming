@@ -35,21 +35,21 @@ public class PlayerController : MonoBehaviour
         movementSM.SwitchStates(movementSM.deadState);
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<CollectingKeys>())
+        if (other.GetComponent<CollectingKeys>())
         {
             numOfKeys++;
             Destroy(other.gameObject);
             return;
         }
 
-        if (other.gameObject.GetComponent<OpeningDoors>())
+        if (other.GetComponent<OpeningDoors>())
         {
             if (numOfKeys < 1) return;
             
             numOfKeys--;
-            other.gameObject.GetComponent<OpeningDoors>().OpenDoor();
+            other.GetComponent<OpeningDoors>().OpenDoor();
         }
     }
 }

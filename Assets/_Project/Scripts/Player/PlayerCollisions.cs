@@ -5,11 +5,11 @@ public class PlayerCollisions : MonoBehaviour
     private PlayerController playerController;
     private PlayerMovementStateMachine movementSM;
     
-    private void OnCollisionEnter(Collision col)
+    private void OnTriggerEnter(Collider col)
     {
-        if(!col.gameObject.GetComponent<PlayerController>()) return;
-        Debug.Log(col.gameObject.name);
-        playerController = col.gameObject.GetComponent<PlayerController>();
+        if(!col.GetComponent<PlayerController>()) return;
+        Debug.Log(col.name);
+        playerController = col.GetComponent<PlayerController>();
         
         
         Debug.Log("touched");
