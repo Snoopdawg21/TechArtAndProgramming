@@ -62,7 +62,7 @@ public class MovementCalculation : MonoBehaviour
         movementX = transform.forward * direction.x;
         movementZ = transform.right * direction.y;
         
-        var movement = (movementX + movementZ) * (movementSpeed);
+        var movement = (movementX + movementZ) * (movementSpeed * Time.fixedDeltaTime);
 
         cc.Move(movement);
         Debug.Log("1");
@@ -70,7 +70,7 @@ public class MovementCalculation : MonoBehaviour
         if(groundCheck())
             gravityMovement = Vector3.zero;
         else
-            gravityMovement += Physics.gravity * (movementSpeed);
+            gravityMovement += Physics.gravity * (movementSpeed * Time.fixedDeltaTime);
         
         cc.Move(gravityMovement);
         

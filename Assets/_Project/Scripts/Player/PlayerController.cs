@@ -1,7 +1,10 @@
+using System;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    private float numOfKeys;
+    
     public PlayerMovementStateMachine movementSM;
     private Vector3 spawnPos;
 
@@ -30,5 +33,23 @@ public class PlayerController : MonoBehaviour
         
         transform.position = spawnPos;
         movementSM.SwitchStates(movementSM.deadState);
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.GetComponent<CollectingKeys>())
+        {
+            numOfKeys++;
+            Destroy(other.gameObject);
+            return;
+        }
+
+        if (other.gameObject.GetComponent<OpeningDoors>())
+        {
+            if (numOfKeys < 1) return;
+            
+            numOfKeys--;
+            other.gameObject.GetComponent<OpeningDoors>().OpenDoor();
+        }
     }
 }
