@@ -4,16 +4,13 @@ public class PlayerCollisions : MonoBehaviour
 {
     private PlayerController playerController;
     private PlayerMovementStateMachine movementSM;
-
-    private void Start()
-    {
-        playerController = gameObject.GetComponent<PlayerController>();
-    }
     
-    private void OnTriggerEnter(Collider col)
+    private void OnCollisionEnter(Collision col)
     {
+        if(!col.gameObject.GetComponent<PlayerController>()) return;
         Debug.Log(col.gameObject.name);
-        if (!col.gameObject.CompareTag("enemy")) return;
+        playerController = col.gameObject.GetComponent<PlayerController>();
+        
         
         Debug.Log("touched");
         playerController.HitEnemy();

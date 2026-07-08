@@ -2,13 +2,18 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private PlayerMovementStateMachine movementSM;
+    public PlayerMovementStateMachine movementSM;
     private Vector3 spawnPos;
+
+    public bool isAlive = true;
+    
+    public MovementCalculation calc;
 
     private void Start()
     {
+        calc = GetComponent<MovementCalculation>();
         movementSM = new PlayerMovementStateMachine(this);
-        movementSM.Initialize(movementSM.aliveState);
+        movementSM.SwitchStates(movementSM.aliveState);
 
         spawnPos = transform.position;
     }
@@ -20,7 +25,10 @@ public class PlayerController : MonoBehaviour
 
     public void HitEnemy()
     {
+        if (!isAlive) return;
+        isAlive = false;
+        
         transform.position = spawnPos;
-        movementSM.currentState?.Exit();
+        movementSM.SwitchStates(movementSM.deadState);
     }
 }

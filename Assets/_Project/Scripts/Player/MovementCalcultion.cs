@@ -62,16 +62,18 @@ public class MovementCalculation : MonoBehaviour
         movementX = transform.forward * direction.x;
         movementZ = transform.right * direction.y;
         
-        var movement = (movementX + movementZ) * (movementSpeed * Time.deltaTime);
+        var movement = (movementX + movementZ) * (movementSpeed);
 
         cc.Move(movement);
+        Debug.Log("1");
         
         if(groundCheck())
             gravityMovement = Vector3.zero;
         else
-            gravityMovement += Physics.gravity * (movementSpeed * Time.deltaTime);
+            gravityMovement += Physics.gravity * (movementSpeed);
         
         cc.Move(gravityMovement);
+        
     }
     
     private void CalculateMouseMovement()

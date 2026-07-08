@@ -3405,10 +3405,41 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1880026224}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &310044622 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1245459878121369764, guid: ceeec85225d69e24f877fc8370941829, type: 3}
+  m_PrefabInstance: {fileID: 1787765880}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &310044628
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310044622}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &315894872
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9797,14 +9828,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1061795241}
   - component: {fileID: 1061795243}
-  - component: {fileID: 1061795242}
   m_Layer: 7
   m_Name: TriggerBox
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1061795241
 Transform:
   m_ObjectHideFlags: 0
@@ -9820,18 +9850,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1880026224}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1061795242
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1061795240}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fa69a9f15355604e807f67f59b032da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerCollisions
 --- !u!65 &1061795243
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9847,7 +9865,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 192
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -17049,7 +17067,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1245459878121369764, guid: ceeec85225d69e24f877fc8370941829, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 310044628}
   m_SourcePrefab: {fileID: 100100000, guid: ceeec85225d69e24f877fc8370941829, type: 3}
 --- !u!1 &1808624592
 GameObject:
@@ -18551,7 +18572,7 @@ Transform:
   m_Children:
   - {fileID: 538845348}
   - {fileID: 1061795241}
-  m_Father: {fileID: 307373576}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1880026225
 MonoBehaviour:
@@ -23090,6 +23111,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 401778109}
+  - {fileID: 1880026224}
   - {fileID: 307373576}
   - {fileID: 1375080644}
   - {fileID: 34772853}

@@ -1,16 +1,20 @@
 using UnityEngine;
+using UnityEngine.Rendering.VirtualTexturing;
 
 public class PMSAlive : IPlayerMovementStates
 {
-    private MovementCalculation calc;
-    private PlayerCollisions collider;
+    private PlayerController player;
+
+    public PMSAlive(PlayerController playerController)
+    {
+        this.player = playerController;
+    }
     
     public void Enter()
     {
-        calc = GameObject.FindGameObjectWithTag("Player").GetComponent<MovementCalculation>();
-        collider = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerCollisions>();
-        calc.enabled = true;
-        collider.enabled = true;
+        player.isAlive = true;
+        player.calc.enabled = true;
+        Debug.Log("im alive!!!!");
     }
 
     public void Execute()
@@ -20,7 +24,6 @@ public class PMSAlive : IPlayerMovementStates
 
     public void Exit()
     {
-        calc.enabled = false;
-        collider.enabled = false;
+        
     }
 }
