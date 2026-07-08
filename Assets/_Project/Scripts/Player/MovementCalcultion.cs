@@ -65,7 +65,6 @@ public class MovementCalculation : MonoBehaviour
         var movement = (movementX + movementZ) * (movementSpeed * Time.fixedDeltaTime);
 
         cc.Move(movement);
-        Debug.Log("1");
         
         if(groundCheck())
             gravityMovement = Vector3.zero;

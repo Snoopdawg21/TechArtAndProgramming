@@ -24,7 +24,6 @@ public class PMSDead : IPlayerMovementStates
         if (respawnTimer > 2)
         {
             player.movementSM.SwitchStates(player.movementSM.aliveState);
-            Debug.Log("hi");
         }
         
         respawnTimer += Time.deltaTime;
