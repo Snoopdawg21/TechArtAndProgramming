@@ -4,7 +4,7 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent agent;
-    private EnemyMovementStateMachine movementSM;
+    public EnemyMovementStateMachine movementSM;
     private PlayerCheck playerCheck;
 
     private float stimuliTimer;

@@ -4,6 +4,7 @@ using UnityEngine.AI;
 public class EMSChase : IEnemyMovementStates
 {
     private Transform playerPos;
+    private float enemySpeed = 5;
     
     public void Enter()
     {
@@ -13,6 +14,10 @@ public class EMSChase : IEnemyMovementStates
     public void Execute(NavMeshAgent agent)
     {
         agent.SetDestination(playerPos.position);
+        
+        if (agent.speed == enemySpeed) return;
+        
+        agent.speed = enemySpeed;
     }
 
     public void Exit()

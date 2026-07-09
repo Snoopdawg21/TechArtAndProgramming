@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
         numOfKeys = new bool[GameObject.FindGameObjectsWithTag("Key").Length];
         
         spawnPos = transform.position;
+        spawnPos.y -= 1;
     }
 
     private void FixedUpdate()

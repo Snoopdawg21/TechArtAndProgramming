@@ -11,8 +11,8 @@ public class PlayerCollisions : MonoBehaviour
         Debug.Log(col.name);
         playerController = col.GetComponent<PlayerController>();
         
-        
         Debug.Log("touched");
         playerController.HitEnemy();
+        gameObject.GetComponent<EnemyController>().movementSM.SwitchStates(gameObject.GetComponent<EnemyController>().movementSM.patrolState);
     }
 }

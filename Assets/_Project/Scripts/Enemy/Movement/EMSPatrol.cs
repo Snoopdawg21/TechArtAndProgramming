@@ -8,6 +8,8 @@ public class EMSPatrol : IEnemyMovementStates
     private int counter;
     private int randomNum;
     private float checkTimer;
+
+    private float enemySpeed = 2.5f;
     
     public void Enter()
     {
@@ -40,6 +42,10 @@ public class EMSPatrol : IEnemyMovementStates
         
         agent.SetDestination(pointsPos[counter]);
         checkTimer = 0;
+
+        if (agent.speed == enemySpeed) return;
+
+        agent.speed = enemySpeed;
     }
 
     public void Exit()

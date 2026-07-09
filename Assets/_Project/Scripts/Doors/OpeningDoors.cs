@@ -11,7 +11,6 @@ public class OpeningDoors : MonoBehaviour
     private void Update()
     {
         if (!canTurn) return;
-        Debug.Log(transform.rotation.eulerAngles.y);
         if (transform.rotation.eulerAngles.y >= 90) return;
         
         transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);

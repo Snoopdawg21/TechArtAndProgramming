@@ -159,7 +159,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d859685174faf124abe42cb3cc29f050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OpeningDoors
-  rotationSpeed: 20
+  doorNum: 0
+  rotationSpeed: 35
 --- !u!65 &12199759566833736
 BoxCollider:
   m_ObjectHideFlags: 0
