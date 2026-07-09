@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private float numOfKeys;
+    private bool[] numOfKeys;
     
     public PlayerMovementStateMachine movementSM;
     private Vector3 spawnPos;
@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
         movementSM = new PlayerMovementStateMachine(this);
         movementSM.SwitchStates(movementSM.aliveState);
 
+        numOfKeys = new bool[GameObject.FindGameObjectsWithTag("Key").Length];
+        
         spawnPos = transform.position;
     }
 
@@ -39,16 +41,16 @@ public class PlayerController : MonoBehaviour
     {
         if (other.GetComponent<CollectingKeys>())
         {
-            numOfKeys++;
+            numOfKeys[other.GetComponent<CollectingKeys>().keyNum] = true;
             Destroy(other.gameObject);
             return;
         }
 
         if (other.GetComponent<OpeningDoors>())
         {
-            if (numOfKeys < 1) return;
-            
-            numOfKeys--;
+            if (!numOfKeys[other.GetComponent<OpeningDoors>().doorNum]) return;
+
+            numOfKeys[other.GetComponent<OpeningDoors>().doorNum] = false;
             other.GetComponent<OpeningDoors>().OpenDoor();
         }
     }
