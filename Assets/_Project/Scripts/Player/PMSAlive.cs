@@ -14,7 +14,6 @@ public class PMSAlive : IPlayerMovementStates
     {
         player.isAlive = true;
         player.calc.enabled = true;
-        Debug.Log("im alive!!!!");
     }
 
     public void Execute()

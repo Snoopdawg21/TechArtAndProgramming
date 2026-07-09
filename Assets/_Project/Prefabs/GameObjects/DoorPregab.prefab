@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OpeningDoors
   doorNum: 0
-  rotationSpeed: 35
+  rotationSpeed: -35
 --- !u!65 &12199759566833736
 BoxCollider:
   m_ObjectHideFlags: 0

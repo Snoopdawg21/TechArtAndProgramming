@@ -45,6 +45,21 @@ public class EnemyController : MonoBehaviour
         stateToggle = true;
         movementSM.SwitchStates(movementSM.chaseState);
     }
+
+    private void OnTriggerEnter(Collider col)
+    {
+        
+        if (!col.GetComponent<OpeningDoors>()) return;
+        Debug.Log("enter");
+        col.GetComponent<OpeningDoors>().OpenDoor();
+    }
+    
+    private void OnTriggerExit(Collider col)
+    {
+        if (!col.GetComponent<OpeningDoors>()) return;
+        Debug.Log("exit");
+        col.GetComponent<OpeningDoors>().CloseDoor();
+    }
     
     private void OnDrawGizmos()
     {

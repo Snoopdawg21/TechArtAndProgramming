@@ -6,18 +6,35 @@ public class OpeningDoors : MonoBehaviour
     
     [SerializeField] private float rotationSpeed;
     private bool canTurn;
-    private float rotationAngle;
 
     private void Update()
     {
         if (!canTurn) return;
-        if (transform.rotation.eulerAngles.y >= 90) return;
+        if (transform.rotation.eulerAngles.y >= 90 || transform.rotation.eulerAngles.y <= 0)
+        {
+            canTurn = false;
+            return;
+        }
         
-        transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
+        RotateDoor();
+    }
+
+    private void RotateDoor()
+    {
+        transform.Rotate(0, Mathf.Clamp(rotationSpeed * Time.deltaTime, 0, 90), 0);
     }
     
     public void OpenDoor()
     {
         canTurn = true;
+        rotationSpeed *= -1;
+        RotateDoor();
+    }
+
+    public void CloseDoor()
+    {
+        canTurn = true;
+        rotationSpeed *= -1;
+        RotateDoor();
     }
 }
