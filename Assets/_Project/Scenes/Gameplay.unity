@@ -3413,7 +3413,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1880026224}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &315894872
@@ -3582,6 +3583,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d859685174faf124abe42cb3cc29f050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OpeningDoors
+  doorNum: 0
+  rotationSpeed: 0
 --- !u!65 &322003843
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4467,7 +4470,7 @@ GameObject:
   - component: {fileID: 472668731}
   m_Layer: 0
   m_Name: Key
-  m_TagString: Untagged
+  m_TagString: Key
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4484,6 +4487,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b12f40dcb3a7f6d4ebda08da1854f29a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectingKeys
+  keyNum: 0
 --- !u!54 &472668732
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5857,7 +5861,7 @@ GameObject:
   - component: {fileID: 607502428}
   m_Layer: 0
   m_Name: Key (1)
-  m_TagString: Untagged
+  m_TagString: Key
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5874,6 +5878,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b12f40dcb3a7f6d4ebda08da1854f29a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectingKeys
+  keyNum: 0
 --- !u!54 &607502429
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8364,7 +8369,7 @@ GameObject:
   - component: {fileID: 900052202}
   m_Layer: 0
   m_Name: Key (2)
-  m_TagString: Untagged
+  m_TagString: Key
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8381,6 +8386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b12f40dcb3a7f6d4ebda08da1854f29a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectingKeys
+  keyNum: 0
 --- !u!54 &900052203
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10198,6 +10204,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d859685174faf124abe42cb3cc29f050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OpeningDoors
+  doorNum: 0
+  rotationSpeed: 0
 --- !u!65 &1040556655
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19311,7 +19319,7 @@ Transform:
   m_Children:
   - {fileID: 538845348}
   - {fileID: 1061795241}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 307373576}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1880026225
 MonoBehaviour:
@@ -21786,6 +21794,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d859685174faf124abe42cb3cc29f050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OpeningDoors
+  doorNum: 0
+  rotationSpeed: 0
 --- !u!1001 &2091744476
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24036,7 +24046,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 401778109}
-  - {fileID: 1880026224}
   - {fileID: 307373576}
   - {fileID: 1375080644}
   - {fileID: 34772853}
