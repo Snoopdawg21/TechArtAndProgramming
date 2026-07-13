@@ -10,7 +10,7 @@ public class OpeningDoors : MonoBehaviour
     private void Update()
     {
         if (!canTurn) return;
-        if (transform.rotation.eulerAngles.y >= 90 || transform.rotation.eulerAngles.y <= 0)
+        if (transform.rotation.eulerAngles.y >= 90)
         {
             canTurn = false;
             return;
@@ -21,13 +21,14 @@ public class OpeningDoors : MonoBehaviour
 
     private void RotateDoor()
     {
-        transform.Rotate(0, Mathf.Clamp(rotationSpeed * Time.deltaTime, 0, 90), 0);
+        transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
     }
     
     public void OpenDoor()
     {
+        Debug.Log("opening");
         canTurn = true;
-        rotationSpeed *= -1;
+        //rotationSpeed *= -1;
         RotateDoor();
     }
 

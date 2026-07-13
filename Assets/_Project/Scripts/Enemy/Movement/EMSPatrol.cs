@@ -31,17 +31,15 @@ public class EMSPatrol : IEnemyMovementStates
     public void Execute(NavMeshAgent agent)
     {
         checkTimer += Time.deltaTime;
+        if (checkTimer > 75f)
+        {
+            NewPoint(agent);
+            return;
+        }
+        
         if (agent.remainingDistance > agent.stoppingDistance || checkTimer < 2) return;
 
-        while (randomNum == counter)
-        {
-            randomNum = Random.Range(0, pointsPos.Length);
-        }
-
-        counter = randomNum;
-        
-        agent.SetDestination(pointsPos[counter]);
-        checkTimer = 0;
+        NewPoint(agent);
 
         if (agent.speed == enemySpeed) return;
 
@@ -52,5 +50,18 @@ public class EMSPatrol : IEnemyMovementStates
     {
         counter = 0;
         randomNum = 0;
+    }
+
+    private void NewPoint(NavMeshAgent agent)
+    {
+        while (randomNum == counter)
+        {
+            randomNum = Random.Range(0, pointsPos.Length);
+        }
+
+        counter = randomNum;
+        
+        agent.SetDestination(pointsPos[counter]);
+        checkTimer = 0;
     }
 }
