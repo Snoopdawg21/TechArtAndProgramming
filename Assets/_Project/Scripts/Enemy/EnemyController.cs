@@ -3,7 +3,7 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
-    [SerializeField] private NavMeshAgent agent;
+    private NavMeshAgent agent;
     public EnemyMovementStateMachine movementSM;
     private PlayerCheck playerCheck;
 
@@ -18,6 +18,11 @@ public class EnemyController : MonoBehaviour
     public Vector3 rayOffset {get;} = new (0, 1, 0);
     public float radius { get; private set; } = 0.5f;
 
+    private void Awake()
+    {
+        agent = gameObject.GetComponent<NavMeshAgent>();
+    }
+    
     private void Start()
     {
         movementSM = new EnemyMovementStateMachine(this);

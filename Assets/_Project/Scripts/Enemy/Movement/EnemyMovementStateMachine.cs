@@ -16,7 +16,7 @@ public class EnemyMovementStateMachine
     
     public void SwitchStates(IEnemyMovementStates state, NavMeshAgent agent)
     {
-        currentState.Exit();
+        currentState?.Exit();
         currentState = state;
         currentState.Enter(agent);
     }
