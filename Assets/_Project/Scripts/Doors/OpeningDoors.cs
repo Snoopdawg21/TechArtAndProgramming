@@ -3,14 +3,14 @@ using UnityEngine;
 public class OpeningDoors : MonoBehaviour
 {
     public int doorNum;
-    
+    [SerializeField] private Transform doorBody;
     [SerializeField] private float rotationSpeed;
     private bool canTurn;
 
     private void Update()
     {
         if (!canTurn) return;
-        if (transform.rotation.eulerAngles.y >= 90)
+        if (doorBody.rotation.eulerAngles.y >= 90)
         {
             canTurn = false;
             return;
@@ -21,7 +21,7 @@ public class OpeningDoors : MonoBehaviour
 
     private void RotateDoor()
     {
-        transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
+        doorBody.Rotate(0, rotationSpeed * Time.deltaTime, 0);
     }
     
     public void OpenDoor()

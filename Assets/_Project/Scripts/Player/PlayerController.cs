@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
         {
             if (!numOfKeys[other.GetComponent<OpeningDoors>().doorNum]) return;
 
-            numOfKeys[other.GetComponent<OpeningDoors>().doorNum] = false;
+            //numOfKeys[other.GetComponent<OpeningDoors>().doorNum] = false;
             other.GetComponent<OpeningDoors>().OpenDoor();
         }
     }

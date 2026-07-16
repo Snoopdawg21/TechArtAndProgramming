@@ -9,13 +9,16 @@ public class EnemyManager : MonoBehaviour
     private void Start()
     {
         enemies = GameObject.FindGameObjectsWithTag("enemy");
+        Debug.Log(enemies.Length);
     }
 
     public void CaughtPlayer()
     {
         foreach (var enemy in enemies)
         {
-            enemy.GetComponent<EnemyController>().movementSM.SwitchStates(enemy.GetComponent<EnemyController>().movementSM.patrolState, enemy.GetComponent<NavMeshAgent>());
+            currentEnemy = enemy.GetComponent<EnemyController>();
+            
+            currentEnemy.movementSM.SwitchStates(currentEnemy.movementSM.patrolState, enemy.GetComponent<NavMeshAgent>());
         }
     }
 }
