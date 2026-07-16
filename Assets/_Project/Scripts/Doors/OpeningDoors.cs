@@ -10,7 +10,7 @@ public class OpeningDoors : MonoBehaviour
     private void Update()
     {
         if (!canTurn) return;
-        if (doorBody.rotation.eulerAngles.y >= 90)
+        if (doorBody.localRotation.eulerAngles.y >= 90)
         {
             canTurn = false;
             return;
