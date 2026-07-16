@@ -10,6 +10,8 @@ public class EnemyController : MonoBehaviour
     private float stimuliTimer;
     private bool stateToggle;
 
+    public EnemyManager em { get; private set; }
+
     [Header("Visual Check")] 
     [SerializeField] private float stimulusMaxTimer;
 
@@ -19,9 +21,11 @@ public class EnemyController : MonoBehaviour
     private void Start()
     {
         movementSM = new EnemyMovementStateMachine(this);
-        movementSM.Initialize(movementSM.patrolState);
+        movementSM.SwitchStates(movementSM.patrolState, agent);
         
         playerCheck = new PlayerCheck(this);
+
+        em = GameObject.FindGameObjectWithTag("GameController").GetComponent<EnemyManager>();
     }
     
     private void Update()
@@ -31,7 +35,7 @@ public class EnemyController : MonoBehaviour
 
         if (stimuliTimer > stimulusMaxTimer && stateToggle)
         {
-            movementSM.SwitchStates(movementSM.patrolState);
+            movementSM.SwitchStates(movementSM.patrolState, agent);
             stateToggle = false;
             return;
         }
@@ -43,7 +47,7 @@ public class EnemyController : MonoBehaviour
         if (stateToggle) return;
         
         stateToggle = true;
-        movementSM.SwitchStates(movementSM.chaseState);
+        movementSM.SwitchStates(movementSM.chaseState, agent);
     }
 
     private void OnTriggerEnter(Collider col)

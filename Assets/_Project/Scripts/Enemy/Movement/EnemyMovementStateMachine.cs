@@ -14,16 +14,10 @@ public class EnemyMovementStateMachine
         chaseState = new EMSChase();
     }
     
-    public void Initialize(IEnemyMovementStates state)
-    {
-        currentState = state;
-        currentState.Enter();
-    }
-
-    public void SwitchStates(IEnemyMovementStates state)
+    public void SwitchStates(IEnemyMovementStates state, NavMeshAgent agent)
     {
         currentState.Exit();
         currentState = state;
-        currentState.Enter();
+        currentState.Enter(agent);
     }
 }

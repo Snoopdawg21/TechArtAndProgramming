@@ -2,7 +2,7 @@ using UnityEngine.AI;
 
 public interface IEnemyMovementStates
 {
-    void Enter();
+    void Enter(NavMeshAgent agent);
     void Execute(NavMeshAgent agent);
     void Exit();
 }

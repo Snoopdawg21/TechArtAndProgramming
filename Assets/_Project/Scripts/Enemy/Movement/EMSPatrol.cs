@@ -11,14 +11,14 @@ public class EMSPatrol : IEnemyMovementStates
 
     private float enemySpeed = 2.5f;
     
-    public void Enter()
+    public void Enter(NavMeshAgent agent)
     {
         if (pointsPos != null) return;
         
         patrolPointsOBJ = GameObject.FindGameObjectsWithTag("Patrol Point");
         pointsPos = new Vector3[patrolPointsOBJ.Length];
 
-        foreach (GameObject point in patrolPointsOBJ)
+        foreach (var point in patrolPointsOBJ)
         {
             pointsPos[counter] = point.transform.position;
             counter++;
@@ -26,6 +26,8 @@ public class EMSPatrol : IEnemyMovementStates
         
         counter = 0;
         randomNum = 0;
+        
+        agent.speed = enemySpeed;
     }
 
     public void Execute(NavMeshAgent agent)
@@ -40,10 +42,6 @@ public class EMSPatrol : IEnemyMovementStates
         if (agent.remainingDistance > agent.stoppingDistance || checkTimer < 2) return;
 
         NewPoint(agent);
-
-        if (agent.speed == enemySpeed) return;
-
-        agent.speed = enemySpeed;
     }
 
     public void Exit()

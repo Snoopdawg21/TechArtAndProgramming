@@ -1,18 +1,21 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PlayerCollisions : MonoBehaviour
 {
     private PlayerController playerController;
-    private PlayerMovementStateMachine movementSM;
+    private EnemyController controller;
     
     private void OnTriggerEnter(Collider col)
     {
         if(!col.GetComponent<PlayerController>()) return;
+        controller = gameObject.GetComponent<EnemyController>();
+        
         Debug.Log(col.name);
         playerController = col.GetComponent<PlayerController>();
         
         Debug.Log("touched");
         playerController.HitEnemy();
-        gameObject.GetComponent<EnemyController>().movementSM.SwitchStates(gameObject.GetComponent<EnemyController>().movementSM.patrolState);
+        controller.em.CaughtPlayer();
     }
 }
