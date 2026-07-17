@@ -10,7 +10,9 @@ public class OpeningDoors : MonoBehaviour
     private void Update()
     {
         if (!canTurn) return;
-        if (doorBody.localRotation.eulerAngles.y >= 90)
+        Debug.Log(doorBody.localRotation.eulerAngles.y);
+        if (doorBody.localRotation.eulerAngles.y >= 90|| 
+            doorBody.localRotation.eulerAngles.y <= 0f)
         {
             canTurn = false;
             return;
@@ -28,8 +30,9 @@ public class OpeningDoors : MonoBehaviour
     {
         Debug.Log("opening");
         canTurn = true;
-        //rotationSpeed *= -1;
+        rotationSpeed *= -1;
         RotateDoor();
+        doorBody.eulerAngles = new Vector3(0, doorBody.localRotation.eulerAngles.y + 0.5f, 0);
     }
 
     public void CloseDoor()
@@ -37,5 +40,6 @@ public class OpeningDoors : MonoBehaviour
         canTurn = true;
         rotationSpeed *= -1;
         RotateDoor();
+        doorBody.eulerAngles = new Vector3(0, doorBody.localRotation.eulerAngles.y - 0.5f, 0);
     }
 }
