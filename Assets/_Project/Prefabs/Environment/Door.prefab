@@ -306,8 +306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OpeningDoors
   doorNum: 0
-  doorBody: {fileID: 4486182263902434663}
-  rotationSpeed: 60
+  anim: {fileID: 1995915468208201960}
 --- !u!54 &7468309539866276796
 Rigidbody:
   m_ObjectHideFlags: 0
