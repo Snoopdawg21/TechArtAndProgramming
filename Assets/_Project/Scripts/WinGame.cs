@@ -6,7 +6,6 @@ public class WinGame : MonoBehaviour
     {
         if (!col.GetComponent<PlayerController>()) return;
         
-        Debug.Log("You win!");
-        Time.timeScale = 0;
+        col.GetComponent<PlayerController>().gm.WinGame();
     }
 }

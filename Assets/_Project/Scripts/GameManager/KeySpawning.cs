@@ -10,16 +10,14 @@ public class KeySpawning : MonoBehaviour
     private int previousSpawnPos;
     private int spawnPos;
     
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
         keys = new GameObject[3];
         keys[0] = GameObject.FindGameObjectWithTag("Key");
-        ScatterKeys();
     }
 
-    void ScatterKeys()
+    public void ScatterKeys()
     {
         for (var i = 1; i < keys.Length; i++)
         {

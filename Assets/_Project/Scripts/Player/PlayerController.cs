@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     
     public MovementCalculation calc;
 
+    public GameManager gm { get; private set; }
+
     private void Start()
     {
         calc = GetComponent<MovementCalculation>();
@@ -19,6 +21,8 @@ public class PlayerController : MonoBehaviour
         movementSM.SwitchStates(movementSM.aliveState);
 
         numOfKeys = new bool[GameObject.FindGameObjectsWithTag("Key").Length];
+        
+        gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         
         spawnPos = transform.position;
         spawnPos.y -= 1;
