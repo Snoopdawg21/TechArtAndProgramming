@@ -24,6 +24,10 @@ public class MovementCalculation : MonoBehaviour
     private float yRotation;
     private float lookX;
     private float lookY;
+
+    private bool paused;
+
+    private PlayerController control;
     
     public void OnForward(InputValue value)
     {
@@ -40,9 +44,16 @@ public class MovementCalculation : MonoBehaviour
         mousePosition = value.Get<Vector2>();
     }
 
+    public void OnPause(InputAction action)
+    {
+        control.gm.PauseGame();
+    }
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        
+        control = gameObject.GetComponent<PlayerController>();
     }
 
     private void Update()
