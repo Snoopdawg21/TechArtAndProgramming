@@ -4,11 +4,11 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - EntryPoint
   - Patrol Point
   - Environment
   - enemy
   - Key
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX
