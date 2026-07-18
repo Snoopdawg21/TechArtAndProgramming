@@ -28,6 +28,8 @@ public class EMSPatrol : IEnemyMovementStates
         randomNum = 0;
         
         agent.speed = enemySpeed;
+        
+        agent.gameObject.GetComponent<FootstepSoundManager>().soundTimer = 0.5f;
     }
 
     public void Execute(NavMeshAgent agent)

@@ -8,14 +8,20 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject pauseScreen;
     private bool pauseToggle;
 
+    public bool gameOver;
+
     private GameStateManager gsm;
-    public KeySpawning spawn;
+    public KeySpawning spawn { get; private set; }
+
+    public PlayerController playerControl;
 
     void Start()
     {
         if (SceneManager.GetActiveScene().buildIndex == 0) return;
         
         spawn = gameObject.GetComponent<KeySpawning>();
+        
+        playerControl = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         
         gsm = new GameStateManager(this);
         gsm.SwitchStates(gsm.playingState);
@@ -33,16 +39,20 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame()
     {
+        if (gameOver) return;
+        
         pauseToggle = !pauseToggle;
         pauseScreen.gameObject.SetActive(pauseToggle);
 
         switch (pauseToggle)
         {
             case true:
-                gsm.SwitchStates(gsm.winState);
+                gsm.SwitchStates(gsm.pauseState);
+                Cursor.lockState = CursorLockMode.None;
                 break;
             case false:
                 gsm.SwitchStates(gsm.playingState);
+                Cursor.lockState = CursorLockMode.Locked;
                 break;
         }
     }

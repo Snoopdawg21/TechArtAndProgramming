@@ -44,7 +44,7 @@ public class MovementCalculation : MonoBehaviour
         mousePosition = value.Get<Vector2>();
     }
 
-    public void OnPause(InputAction action)
+    public void OnPause(InputValue value)
     {
         control.gm.PauseGame();
     }
@@ -58,8 +58,9 @@ public class MovementCalculation : MonoBehaviour
 
     private void Update()
     {
-        CalculateMouseMovement();
+        if (Time.timeScale == 0) return;
         
+        CalculateMouseMovement();
     }
 
     private void FixedUpdate()

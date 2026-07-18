@@ -11,6 +11,8 @@ public class EMSChase : IEnemyMovementStates
         playerPos = GameObject.FindGameObjectWithTag("Player").transform;
         
         agent.speed = enemySpeed;
+
+        agent.gameObject.GetComponent<FootstepSoundManager>().soundTimer = 0.25f;
     }
 
     public void Execute(NavMeshAgent agent)

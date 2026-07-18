@@ -6,11 +6,13 @@ public class GameStateManager
 
     public GSPlaying playingState;
     public GSWin winState;
+    public GSPause pauseState;
     
     public GameStateManager(GameManager gm)
     {
         playingState = new GSPlaying();
         winState = new GSWin();
+        pauseState = new GSPause();
         
         manager = gm;
     }

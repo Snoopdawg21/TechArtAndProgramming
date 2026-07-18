@@ -3,7 +3,7 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
-    private NavMeshAgent agent;
+    public NavMeshAgent agent { get; private set; }
     public EnemyMovementStateMachine movementSM;
     private PlayerCheck playerCheck;
 
@@ -11,6 +11,7 @@ public class EnemyController : MonoBehaviour
     private bool stateToggle;
 
     public EnemyManager em { get; private set; }
+    private FootstepSoundManager fssm;
 
     [Header("Visual Check")] 
     [SerializeField] private float stimulusMaxTimer;
@@ -29,6 +30,8 @@ public class EnemyController : MonoBehaviour
         movementSM.SwitchStates(movementSM.patrolState, agent);
         
         playerCheck = new PlayerCheck(this);
+        
+        fssm = gameObject.GetComponent<FootstepSoundManager>();
 
         em = GameObject.FindGameObjectWithTag("GameController").GetComponent<EnemyManager>();
     }
