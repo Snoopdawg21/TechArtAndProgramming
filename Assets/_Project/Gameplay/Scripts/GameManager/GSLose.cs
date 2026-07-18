@@ -7,6 +7,7 @@ public class GSLose : IGameStates
     public void Enter(GameManager gm)
     {
         Time.timeScale = 0;
+        Cursor.lockState = CursorLockMode.None;
         
         gm.gameOver = true;
         

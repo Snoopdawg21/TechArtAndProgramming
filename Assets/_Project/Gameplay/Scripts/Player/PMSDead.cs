@@ -17,6 +17,7 @@ public class PMSDead : IPlayerMovementStates
     
     public void Enter()
     {
+        lives--;
         if (lives <= 0)
         {
             player.gm.LoseGame();
