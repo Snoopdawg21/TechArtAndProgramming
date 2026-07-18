@@ -3,7 +3,6 @@ using UnityEngine;
 public class GSWin : IGameStates
 {
     private UIManager ui;
-    private GameManager gm;
     
     public void Enter(GameManager manager)
     {
@@ -14,11 +13,6 @@ public class GSWin : IGameStates
         
         ui = manager.gameObject.GetComponent<UIManager>();
         ui.Win();
-    }
-
-    public void Execute()
-    {
-        
     }
 
     public void Exit()

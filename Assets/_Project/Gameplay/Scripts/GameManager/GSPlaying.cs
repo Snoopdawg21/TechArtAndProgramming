@@ -16,11 +16,6 @@ public class GSPlaying : IGameStates
         gm.playerControl.enabled = true;
     }
 
-    public void Execute()
-    {
-        
-    }
-
     public void Exit()
     {
         gm.playerControl.enabled = false;

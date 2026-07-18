@@ -5,6 +5,7 @@ using TMPro;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private GameObject winScreen;
+    [SerializeField] private GameObject loseScreen;
     [SerializeField] private TextMeshProUGUI informationText;
     [SerializeField] private float timer;
     
@@ -34,6 +35,11 @@ public class UIManager : MonoBehaviour
     public void Win()
     {
         winScreen.SetActive(true);
+    }
+
+    public void Lose()
+    {
+        loseScreen.SetActive(true);
     }
 
     private IEnumerator textTimer()

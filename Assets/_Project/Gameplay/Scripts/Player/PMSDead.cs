@@ -6,13 +6,23 @@ public class PMSDead : IPlayerMovementStates
     private bool respawning;
     private float respawnTimer;
 
+    private int lives;
+
     public PMSDead(PlayerController playerController)
     {
         this.player = playerController;
+        lives = 3;
+        Debug.Log(lives);
     }
     
     public void Enter()
     {
+        if (lives <= 0)
+        {
+            player.gm.LoseGame();
+            return;
+        }
+        
         player.calc.enabled = false;
         player.isAlive = false;
         
@@ -31,6 +41,6 @@ public class PMSDead : IPlayerMovementStates
 
     public void Exit()
     {
-        Debug.Log("exit");
+        
     }
 }

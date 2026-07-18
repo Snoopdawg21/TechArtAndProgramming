@@ -8,11 +8,6 @@ public class GSPause : IGameStates
         Time.timeScale = 0;
     }
 
-    public void Execute()
-    {
-        
-    }
-
     public void Exit()
     {
         

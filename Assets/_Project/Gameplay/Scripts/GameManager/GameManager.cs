@@ -39,6 +39,11 @@ public class GameManager : MonoBehaviour
         gsm.SwitchStates(gsm.winState);
     }
 
+    public void LoseGame()
+    {
+        gsm.SwitchStates(gsm.loseState);
+    }
+
     public void PauseGame()
     {
         if (gameOver) return;
