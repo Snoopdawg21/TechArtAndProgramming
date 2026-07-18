@@ -56,6 +56,7 @@ public class EnemyController : MonoBehaviour
         
         stateToggle = true;
         movementSM.SwitchStates(movementSM.chaseState, agent);
+        em.gm.uiManager.GotSeen();
     }
 
     private void OnTriggerEnter(Collider col)

@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
         if (other.GetComponent<CollectingKeys>())
         {
             numOfKeys[other.GetComponent<CollectingKeys>().keyNum] = true;
+            gm.uiManager.GotKey();
             Destroy(other.gameObject);
             return;
         }
@@ -55,7 +56,7 @@ public class PlayerController : MonoBehaviour
         {
             if (!numOfKeys[other.GetComponent<OpeningDoors>().doorNum])
             {
-                Debug.Log("You don't have that key");
+                gm.uiManager.FailedDoor();
                 return;
             }
             

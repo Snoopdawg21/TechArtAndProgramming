@@ -14,12 +14,14 @@ public class GameManager : MonoBehaviour
     public KeySpawning spawn { get; private set; }
 
     public PlayerController playerControl;
+    public UIManager uiManager;
 
     void Start()
     {
         if (SceneManager.GetActiveScene().buildIndex == 0) return;
         
         spawn = gameObject.GetComponent<KeySpawning>();
+        uiManager = gameObject.GetComponent<UIManager>();
         
         playerControl = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         

@@ -6,8 +6,12 @@ public class EnemyManager : MonoBehaviour
     private EnemyController currentEnemy;
     private GameObject[] enemies;
 
+    public GameManager gm { get; private set; }
+
     private void Start()
     {
+        gm = gameObject.GetComponent<GameManager>();
+        
         enemies = GameObject.FindGameObjectsWithTag("enemy");
         Debug.Log(enemies.Length);
     }
@@ -20,5 +24,7 @@ public class EnemyManager : MonoBehaviour
             
             currentEnemy.movementSM.SwitchStates(currentEnemy.movementSM.patrolState, enemy.GetComponent<NavMeshAgent>());
         }
+        
+        gm.uiManager.HideText();
     }
 }
