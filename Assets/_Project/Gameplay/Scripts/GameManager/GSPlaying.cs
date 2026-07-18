@@ -6,6 +6,8 @@ public class GSPlaying : IGameStates
     
     public void Enter(GameManager manager)
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        
         Time.timeScale = 1;
         manager.spawn.ScatterKeys();
 

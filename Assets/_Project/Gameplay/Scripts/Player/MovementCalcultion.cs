@@ -51,8 +51,6 @@ public class MovementCalculation : MonoBehaviour
 
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        
         control = gameObject.GetComponent<PlayerController>();
     }
 
