@@ -54,12 +54,10 @@ public class EMSPatrol : IEnemyMovementStates
 
     private void NewPoint(NavMeshAgent agent)
     {
-        while (randomNum == counter)
-        {
-            randomNum = Random.Range(0, pointsPos.Length);
-        }
-
-        counter = randomNum;
+        if (counter >= pointsPos.Length)
+            counter = 0;
+        else
+            counter++;
         
         agent.SetDestination(pointsPos[counter]);
         checkTimer = 0;
