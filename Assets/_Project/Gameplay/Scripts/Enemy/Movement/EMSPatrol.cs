@@ -18,14 +18,24 @@ public class EMSPatrol : IEnemyMovementStates
         patrolPointsOBJ = GameObject.FindGameObjectsWithTag("Patrol Point");
         pointsPos = new Vector3[patrolPointsOBJ.Length];
 
-        foreach (var point in patrolPointsOBJ)
+        randomNum = Random.Range(0, pointsPos.Length);
+        
+        for (var i = 0; i < pointsPos.Length; i++)
         {
-            pointsPos[counter] = point.transform.position;
-            counter++;
+            pointsPos[i] = Vector3.zero;
+        }
+
+        for (var i = 0; i < pointsPos.Length; i++)
+        {
+            while(pointsPos[randomNum] != Vector3.zero)
+            {
+                randomNum = Random.Range(0, patrolPointsOBJ.Length);
+            }
+            
+            pointsPos[i] = patrolPointsOBJ[i].transform.position;
         }
         
-        counter = 0;
-        randomNum = 0;
+        counter = Random.Range(0, pointsPos.Length);
         
         agent.speed = enemySpeed;
         
@@ -35,11 +45,6 @@ public class EMSPatrol : IEnemyMovementStates
     public void Execute(NavMeshAgent agent)
     {
         checkTimer += Time.deltaTime;
-        if (checkTimer > 75f)
-        {
-            NewPoint(agent);
-            return;
-        }
         
         if (agent.remainingDistance > agent.stoppingDistance || checkTimer < 2) return;
 
@@ -48,8 +53,7 @@ public class EMSPatrol : IEnemyMovementStates
 
     public void Exit()
     {
-        counter = 0;
-        randomNum = 0;
+        
     }
 
     private void NewPoint(NavMeshAgent agent)
