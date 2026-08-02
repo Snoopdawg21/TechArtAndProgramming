@@ -13,7 +13,6 @@ public class EnemyManager : MonoBehaviour
         gm = gameObject.GetComponent<GameManager>();
         
         enemies = GameObject.FindGameObjectsWithTag("enemy");
-        Debug.Log(enemies.Length);
     }
 
     public void CaughtPlayer()

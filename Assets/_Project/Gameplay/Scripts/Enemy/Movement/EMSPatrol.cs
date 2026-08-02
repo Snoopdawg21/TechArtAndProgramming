@@ -27,9 +27,12 @@ public class EMSPatrol : IEnemyMovementStates
 
         for (var i = 0; i < pointsPos.Length; i++)
         {
-            while(pointsPos[randomNum] != Vector3.zero)
+            randomNum = Random.Range(0, pointsPos.Length);
+
+            if (pointsPos[randomNum] != Vector3.zero)
             {
-                randomNum = Random.Range(0, patrolPointsOBJ.Length);
+                i--;
+                continue;
             }
             
             pointsPos[i] = patrolPointsOBJ[i].transform.position;
@@ -58,7 +61,7 @@ public class EMSPatrol : IEnemyMovementStates
 
     private void NewPoint(NavMeshAgent agent)
     {
-        if (counter >= pointsPos.Length)
+        if (counter >= pointsPos.Length - 1)
             counter = 0;
         else
             counter++;

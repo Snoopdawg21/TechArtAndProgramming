@@ -8,6 +8,7 @@ public class MovementCalculation : MonoBehaviour
     [SerializeField] private Vector2 direction;
     private Vector3 movementX;
     private Vector3 movementZ;
+    private float sprintModifier;
     
     [Header("Ground Check")]
     [SerializeField] private float gravityScale;
@@ -49,6 +50,11 @@ public class MovementCalculation : MonoBehaviour
         control.gm.PauseGame();
     }
 
+    public void OnSprint(InputValue value)
+    {
+        sprintModifier = value.Get<float>();
+    }
+
     private void Start()
     {
         control = gameObject.GetComponent<PlayerController>();
@@ -71,8 +77,8 @@ public class MovementCalculation : MonoBehaviour
     {
         movementX = transform.forward * direction.x;
         movementZ = transform.right * direction.y;
-        
-        var movement = (movementX + movementZ) * (movementSpeed * Time.fixedDeltaTime);
+
+        var movement = (movementX + movementZ) * (movementSpeed * Time.fixedDeltaTime * (sprintModifier + 1));
 
         cc.Move(movement);
         

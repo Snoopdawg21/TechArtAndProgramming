@@ -12,7 +12,6 @@ public class PMSDead : IPlayerMovementStates
     {
         this.player = playerController;
         lives = 3;
-        Debug.Log(lives);
     }
     
     public void Enter()
