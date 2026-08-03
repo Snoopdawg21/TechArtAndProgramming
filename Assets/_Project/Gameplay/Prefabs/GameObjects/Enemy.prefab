@@ -114,9 +114,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c3961d456670f34790ffe7a9d2fd1c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyFOV
-  circularFOV: 4
   distanceFOV: 20
   range: 60
+  seeDistance: 3
 --- !u!136 &2343661816412613730
 CapsuleCollider:
   m_ObjectHideFlags: 0

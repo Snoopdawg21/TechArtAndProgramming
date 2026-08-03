@@ -3,11 +3,10 @@ using UnityEditor;
 
 public class EnemyFOV : MonoBehaviour
 {
-    [SerializeField] private float circularFOV;
     [SerializeField] private float distanceFOV;
     [SerializeField, Range(0, 360)] private float range;
-
-    private Collider[] nearEnemy;
+    [SerializeField] private float seeDistance;
+    
     private Collider[] inFOV;
     private float signedAngle;
     
@@ -17,34 +16,39 @@ public class EnemyFOV : MonoBehaviour
     private void Update()
     {
         seesPlayer = false;
-        nearEnemy = Physics.OverlapSphere(transform.position, circularFOV);
-
-        foreach (var col in nearEnemy)
-        {
-            if (!col.CompareTag("Player")) continue;
-
-            seesPlayer = true;
-            playerPos = col.transform;
-            return;
-        }
         
         inFOV = Physics.OverlapSphere(transform.position, distanceFOV);
         foreach (var col in inFOV)
         {
             if (!col.CompareTag("Player")) continue;
-            
-            signedAngle = Vector3.Angle(transform.forward, col.transform.position - transform.position);
-            
-            if(Mathf.Abs(signedAngle) < range / 2)
+
+            if (Mathf.Abs(Vector3.Distance(transform.position, col.transform.position)) <= seeDistance && transform.position.y < col.transform.position.y)
             {
-                seesPlayer = true;
-                playerPos = col.transform;
+                FoundPlayer(col.transform);
+                Debug.Log($"too close, {transform.position.magnitude - col.transform.position.magnitude}");
+                return;
             }
             
+            signedAngle = Vector3.Angle(transform.forward, col.transform.position - transform.position);
+
+            if (Mathf.Abs(signedAngle) >= range / 2) return;
+            
+            Physics.Raycast(transform.position, col.transform.position - transform.position, out RaycastHit hit, Mathf.Infinity);
+
+            if (!hit.collider.gameObject.CompareTag("Player")) return;
+            Debug.Log("saw you");
+            
+            FoundPlayer(hit.collider.transform);
             break;
         }
     }
 
+    private void FoundPlayer(Transform playerTrans)
+    {
+        seesPlayer = true;
+        playerPos = playerTrans;
+    }
+    
     private void OnDrawGizmos()
     {
         Handles.color = new Color(0, 1, 0, 0.4f);
@@ -52,7 +56,7 @@ public class EnemyFOV : MonoBehaviour
         Handles.DrawSolidDisc(
             transform.position, 
             Vector3.up, 
-            circularFOV
+            seeDistance
             );
         
         Handles.DrawSolidArc(
