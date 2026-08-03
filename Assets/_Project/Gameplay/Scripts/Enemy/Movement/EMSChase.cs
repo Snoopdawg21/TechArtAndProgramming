@@ -4,7 +4,7 @@ using UnityEngine.AI;
 public class EMSChase : IEnemyMovementStates
 {
     private Transform playerPos;
-    private float enemySpeed = 5;
+    private float enemySpeed = 7;
     
     public void Enter(NavMeshAgent agent)
     {

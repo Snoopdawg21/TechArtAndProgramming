@@ -5,7 +5,6 @@ public class EnemyController : MonoBehaviour
 {
     public NavMeshAgent agent { get; private set; }
     public EnemyMovementStateMachine movementSM;
-    private PlayerCheck playerCheck;
 
     private float stimuliTimer;
     private bool stateToggle;
@@ -19,6 +18,8 @@ public class EnemyController : MonoBehaviour
     public Vector3 rayOffset {get;} = new (0, 1, 0);
     public float radius { get; private set; } = 0.5f;
 
+    private EnemyFOV fov;
+
     private void Awake()
     {
         agent = gameObject.GetComponent<NavMeshAgent>();
@@ -29,9 +30,8 @@ public class EnemyController : MonoBehaviour
         movementSM = new EnemyMovementStateMachine(this);
         movementSM.SwitchStates(movementSM.patrolState, agent);
         
-        playerCheck = new PlayerCheck(this);
-        
         fssm = gameObject.GetComponent<FootstepSoundManager>();
+        fov = gameObject.GetComponent<EnemyFOV>();
 
         em = GameObject.FindGameObjectWithTag("GameController").GetComponent<EnemyManager>();
     }
@@ -48,7 +48,7 @@ public class EnemyController : MonoBehaviour
             return;
         }
         
-        if (!playerCheck.VisualCheck(transform)) return;
+        if (!fov.seesPlayer) return;
         
         stimuliTimer = 0;
 
@@ -61,7 +61,6 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        
         if (!col.GetComponent<OpeningDoors>()) return;
         col.GetComponent<OpeningDoors>().OpenDoor();
     }

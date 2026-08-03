@@ -7364,10 +7364,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2076176855}
   - {fileID: 2000732292}
   - {fileID: 600865343}
   - {fileID: 1125463657}
-  - {fileID: 2076176855}
   m_Father: {fileID: 1229327594}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -31546,7 +31546,7 @@ MonoBehaviour:
   camObject: {fileID: 538845347}
   playerCam: {fileID: 538845351}
   mousePosition: {x: 0, y: 0}
-  sensitivity: 0.4
+  sensitivity: 0.2
 --- !u!114 &1880026226
 MonoBehaviour:
   m_ObjectHideFlags: 0

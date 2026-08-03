@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1349097349169240877}
   - component: {fileID: 1008233425782661294}
   - component: {fileID: 939392192443562172}
+  - component: {fileID: 8146274753858659562}
   - component: {fileID: 2343661816412613730}
   - component: {fileID: 1215309167274800633}
   - component: {fileID: 8874794324233011713}
@@ -101,6 +102,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fa69a9f15355604e807f67f59b032da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCollisions
+--- !u!114 &8146274753858659562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245459878121369764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c3961d456670f34790ffe7a9d2fd1c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyFOV
+  circularFOV: 4
+  distanceFOV: 20
+  range: 60
 --- !u!136 &2343661816412613730
 CapsuleCollider:
   m_ObjectHideFlags: 0

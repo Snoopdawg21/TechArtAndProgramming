@@ -6,11 +6,13 @@ public class EnemyMovementStateMachine
 
     public EMSPatrol patrolState;
     public EMSChase chaseState;
+    public EMSInvestigate investigateState;
 
     public EnemyMovementStateMachine(EnemyController enemy)
     {
         patrolState = new EMSPatrol();
         chaseState = new EMSChase();
+        investigateState = new EMSInvestigate();
     }
     
     public void SwitchStates(IEnemyMovementStates state, NavMeshAgent agent)
