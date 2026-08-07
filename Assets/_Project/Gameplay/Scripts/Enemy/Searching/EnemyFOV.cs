@@ -25,7 +25,7 @@ public class EnemyFOV : MonoBehaviour
             if (Mathf.Abs(Vector3.Distance(transform.position, col.transform.position)) <= seeDistance && transform.position.y < col.transform.position.y)
             {
                 FoundPlayer(col.transform);
-                Debug.Log($"too close, {transform.position.magnitude - col.transform.position.magnitude}");
+                DevLogger.Log($"too close, {transform.position.magnitude - col.transform.position.magnitude}");
                 return;
             }
             
@@ -36,7 +36,7 @@ public class EnemyFOV : MonoBehaviour
             Physics.Raycast(transform.position, col.transform.position - transform.position, out RaycastHit hit, Mathf.Infinity);
 
             if (!hit.collider.gameObject.CompareTag("Player")) return;
-            Debug.Log("saw you");
+            DevLogger.Log("saw you");
             
             FoundPlayer(hit.collider.transform);
             break;
