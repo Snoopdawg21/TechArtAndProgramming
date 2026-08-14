@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public bool gameOver;
 
     private GameStateManager gsm;
-    public KeySpawning spawn { get; private set; }
+    private KeySpawning spawn;
 
     public PlayerController playerControl;
     public UIManager uiManager;
@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
         
         gsm = new GameStateManager(this);
         gsm.SwitchStates(gsm.playingState);
+        
+        spawn.ScatterKeys();
     }
     
     public void StartGame()
