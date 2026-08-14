@@ -42,7 +42,7 @@ public class EnemyFOV : MonoBehaviour
     private void ShootRay(Collider col) 
     {
         Physics.Raycast(eyes.position, col.transform.position - transform.position, out RaycastHit hit, Mathf.Infinity);
-        DevLogger.Log(hit.collider.gameObject.name);
+        DevLogger.Log(hit.collider.name);
         Debug.DrawRay(eyes.position, col.transform.position - transform.position, Color.red);
         if (hit.collider.GetComponent<PlayerController>())
             FoundPlayer(hit.collider.transform);
