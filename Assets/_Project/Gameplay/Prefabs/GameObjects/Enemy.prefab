@@ -119,6 +119,9 @@ MonoBehaviour:
   range: 60
   seeDistance: 3
   eyes: {fileID: 163601126191375678}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!136 &2343661816412613730
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -1,7 +1,5 @@
-using System.Diagnostics;
 using UnityEngine;
 using UnityEditor;
-using Debug = UnityEngine.Debug;
 
 public class EnemyFOV : MonoBehaviour
 {
@@ -9,6 +7,7 @@ public class EnemyFOV : MonoBehaviour
     [SerializeField, Range(0, 360)] private float range;
     [SerializeField] private float seeDistance;
     [SerializeField] private Transform eyes;
+    [SerializeField] private LayerMask playerLayer;
     
     private Collider[] inFOV;
     private float signedAngle;
@@ -41,9 +40,8 @@ public class EnemyFOV : MonoBehaviour
     
     private void ShootRay(Collider col) 
     {
-        Physics.Raycast(eyes.position, col.transform.position - transform.position, out RaycastHit hit, Mathf.Infinity);
-        DevLogger.Log(hit.collider.name);
-        Debug.DrawRay(eyes.position, col.transform.position - transform.position, Color.red);
+        Physics.Raycast(eyes.position, col.transform.position - eyes.position, out RaycastHit hit, Mathf.Infinity);
+        
         if (hit.collider.GetComponent<PlayerController>())
             FoundPlayer(hit.collider.transform);
     }
