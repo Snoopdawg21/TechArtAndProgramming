@@ -1,11 +1,14 @@
+using System.Diagnostics;
 using UnityEngine;
 using UnityEditor;
+using Debug = UnityEngine.Debug;
 
 public class EnemyFOV : MonoBehaviour
 {
     [SerializeField] private float distanceFOV;
     [SerializeField, Range(0, 360)] private float range;
     [SerializeField] private float seeDistance;
+    [SerializeField] private Transform eyes;
     
     private Collider[] inFOV;
     private float signedAngle;
@@ -22,10 +25,9 @@ public class EnemyFOV : MonoBehaviour
         {
             if (!col.CompareTag("Player")) continue;
 
-            if (Mathf.Abs(Vector3.Distance(transform.position, col.transform.position)) <= seeDistance && transform.position.y < col.transform.position.y)
+            if (Mathf.Abs(Vector3.Distance(transform.position, col.transform.position)) <= seeDistance)
             {
                 ShootRay(col);
-                DevLogger.Log($"too close, {transform.position.magnitude - col.transform.position.magnitude}");
                 return;
             }
             
@@ -39,11 +41,11 @@ public class EnemyFOV : MonoBehaviour
     
     private void ShootRay(Collider col) 
     {
-        Physics.Raycast(transform.position, col.transform.position - transform.position, out RaycastHit hit, Mathf.Infinity);
-
-        if (!hit.collider.gameObject.CompareTag("Player")) return;
-            
-        FoundPlayer(hit.collider.transform);
+        Physics.Raycast(eyes.position, col.transform.position - transform.position, out RaycastHit hit, Mathf.Infinity);
+        DevLogger.Log(hit.collider.gameObject.name);
+        Debug.DrawRay(eyes.position, col.transform.position - transform.position, Color.red);
+        if (hit.collider.GetComponent<PlayerController>())
+            FoundPlayer(hit.collider.transform);
     }
 
 

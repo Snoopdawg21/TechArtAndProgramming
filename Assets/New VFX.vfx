@@ -263,22 +263,6 @@ MonoBehaviour:
     max: Infinity
     enumValues: []
     descendantCount: 0
-  - name: maxSpawnRate
-    path: maxSpawnRate
-    tooltip: 
-    space: -1
-    spaceable: 0
-    sheetType: m_Float
-    realType: Single
-    defaultValue:
-      m_Type:
-        m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-          PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0
-    min: -Infinity
-    max: Infinity
-    enumValues: []
-    descendantCount: 0
   - name: Gravity
     path: Gravity
     tooltip: its gravity
@@ -329,6 +313,22 @@ MonoBehaviour:
     descendantCount: 0
   - name: ParticleLifetime
     path: ParticleLifetime
+    tooltip: 
+    space: -1
+    spaceable: 0
+    sheetType: m_Float
+    realType: Single
+    defaultValue:
+      m_Type:
+        m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089
+      m_SerializableObject: 0
+    min: -Infinity
+    max: Infinity
+    enumValues: []
+    descendantCount: 0
+  - name: maxSpawnRate
+    path: maxSpawnRate
     tooltip: 
     space: -1
     spaceable: 0
@@ -1321,7 +1321,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614559}
   m_ExposedName: Gravity
   m_Exposed: 1
-  m_Order: 2
+  m_Order: 1
   m_Category: 
   m_Min:
     m_Type:
@@ -1768,7 +1768,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614572}
   m_ExposedName: SpawnPeriod
   m_Exposed: 1
-  m_Order: 3
+  m_Order: 2
   m_Category: 
   m_Min:
     m_Type:
@@ -1918,7 +1918,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614612}
   m_ExposedName: ParticleSize
   m_Exposed: 1
-  m_Order: 4
+  m_Order: 3
   m_Category: 
   m_Min:
     m_Type:
@@ -2291,7 +2291,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614623}
   m_ExposedName: ParticleLifetime
   m_Exposed: 1
-  m_Order: 5
+  m_Order: 4
   m_Category: 
   m_Min:
     m_Type:
@@ -3144,7 +3144,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614684}
   m_ExposedName: maxSpawnRate
   m_Exposed: 1
-  m_Order: 1
+  m_Order: 5
   m_Category: 
   m_Min:
     m_Type:
