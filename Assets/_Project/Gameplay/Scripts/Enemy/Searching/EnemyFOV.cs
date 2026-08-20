@@ -50,26 +50,5 @@ public class EnemyFOV : MonoBehaviour
     {
         seesPlayer = true;
         playerPos = playerTrans;
-    }
-    
-    
-    private void OnDrawGizmos()
-    {
-        Handles.color = new Color(0, 1, 0, 0.4f);
-        
-        Handles.DrawSolidDisc(
-            transform.position, 
-            Vector3.up, 
-            seeDistance
-            );
-        
-        Handles.DrawSolidArc(
-            transform.position, 
-            transform.up, 
-            Quaternion.AngleAxis(-range / 2, transform.up) * transform.forward, 
-            range, 
-            distanceFOV
-            );
-    }
-    
+    }    
 }

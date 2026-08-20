@@ -1198,15 +1198,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Run around and collect keys (circles) to open doors.
+  m_text: 'Run around and collect keys to open doors.
 
 
-    Find them all,
-    and escape the building.
+    Find them all, and escape
+    the building.
 
 
-    Make sure none of the guards (orange guys) manage
-    to see you.'
+    Make sure none of the guards manage to see you.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ee7d93d5d136561478ab1326aca1825b, type: 2}
   m_sharedMaterial: {fileID: -3993553457205623363, guid: ee7d93d5d136561478ab1326aca1825b, type: 2}
