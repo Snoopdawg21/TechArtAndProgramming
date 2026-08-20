@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
 
     public GameManager gm { get; private set; }
 
+    [SerializeField] private AudioSource keyAudio;
+    
     private void Start()
     {
         calc = GetComponent<MovementCalculation>();
@@ -48,6 +50,7 @@ public class PlayerController : MonoBehaviour
         {
             numOfKeys[other.GetComponent<CollectingKeys>().keyNum] = true;
             gm.uiManager.GotKey();
+            keyAudio.Play();
             Destroy(other.gameObject);
             return;
         }

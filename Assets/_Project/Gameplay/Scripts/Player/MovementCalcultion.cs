@@ -8,7 +8,10 @@ public class MovementCalculation : MonoBehaviour
     [SerializeField] private Vector2 direction;
     private Vector3 movementX;
     private Vector3 movementZ;
+    [SerializeField] private float sprintValue;
     private float sprintModifier;
+
+    [SerializeField] private InputActionReference sprint;
     
     [Header("Ground Check")]
     [SerializeField] private float gravityScale;
@@ -50,11 +53,6 @@ public class MovementCalculation : MonoBehaviour
         control.gm.PauseGame();
     }
 
-    public void OnSprint(InputValue value)
-    {
-        sprintModifier = value.Get<float>();
-    }
-
     private void Start()
     {
         control = gameObject.GetComponent<PlayerController>();
@@ -63,6 +61,11 @@ public class MovementCalculation : MonoBehaviour
     private void Update()
     {
         if (Time.timeScale == 0) return;
+
+        if (sprint.action.IsPressed())
+            sprintModifier = sprintValue;
+        else
+            sprintModifier = 0;
         
         CalculateMouseMovement();
     }

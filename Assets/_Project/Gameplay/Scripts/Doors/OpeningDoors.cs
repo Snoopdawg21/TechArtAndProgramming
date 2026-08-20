@@ -4,14 +4,25 @@ public class OpeningDoors : MonoBehaviour
 {
     public int doorNum;
     [SerializeField] private Animator anim;
+    [SerializeField] private AudioSource audio;
+
+    private bool doorState;
     
     public void OpenDoor()
     {
-        anim.SetBool("open", true);
+        doorState = true;
+        if(doorState != anim.GetBool("open"))
+            audio.Play();
+        
+        anim.SetBool("open", doorState);
     }
 
     public void CloseDoor()
     {
-        anim.SetBool("open", false);
+        doorState = false;
+        if(doorState != anim.GetBool("open"))
+            audio.Play();
+        
+        anim.SetBool("open", doorState);
     }
 }

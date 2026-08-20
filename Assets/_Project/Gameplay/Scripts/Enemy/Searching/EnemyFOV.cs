@@ -7,7 +7,6 @@ public class EnemyFOV : MonoBehaviour
     [SerializeField, Range(0, 360)] private float range;
     [SerializeField] private float seeDistance;
     [SerializeField] private Transform eyes;
-    [SerializeField] private LayerMask playerLayer;
     
     private Collider[] inFOV;
     private float signedAngle;
@@ -53,6 +52,7 @@ public class EnemyFOV : MonoBehaviour
         playerPos = playerTrans;
     }
     
+    
     private void OnDrawGizmos()
     {
         Handles.color = new Color(0, 1, 0, 0.4f);
@@ -71,4 +71,5 @@ public class EnemyFOV : MonoBehaviour
             distanceFOV
             );
     }
+    
 }

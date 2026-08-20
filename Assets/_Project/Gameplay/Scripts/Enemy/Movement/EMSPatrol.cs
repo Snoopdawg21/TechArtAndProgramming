@@ -13,6 +13,8 @@ public class EMSPatrol : IEnemyMovementStates
     
     public void Enter(NavMeshAgent agent)
     {
+        agent.speed = enemySpeed;
+        
         if (pointsPos != null) return;
         
         patrolPointsOBJ = GameObject.FindGameObjectsWithTag("Patrol Point");
@@ -39,8 +41,6 @@ public class EMSPatrol : IEnemyMovementStates
         }
         
         counter = Random.Range(0, pointsPos.Length);
-        
-        agent.speed = enemySpeed;
         
         agent.gameObject.GetComponent<FootstepSoundManager>().soundTimer = 0.5f;
     }
